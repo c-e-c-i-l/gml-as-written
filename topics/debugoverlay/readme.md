@@ -49,7 +49,7 @@ Mentioned earlier, the gpu is very good at its job but it doesn't like being tol
 draw_text(x, y, "yo momma!");
 
 shader_set(funny_clown_shader) {
-	draw_sprite(spr_yourmom, x, y);
+	draw_sprite(spr_yourmom, 0, x, y);
 	shader_reset();
 }
 
