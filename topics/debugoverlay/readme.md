@@ -1,18 +1,18 @@
-![image](/img/header.png)
+![image](/topics/debugoverlay/img/header.png)
 
 # the debug overlay _!_
 
-#### [ scary graph noises intensify ]
+## [ scary graph noises intensify ]
 
 So you found `show_debug_overlay()` in the manual, and now you're looking at it and it's moving so fast and all the colors and numbers are confusing and you just want to know why your game is lagging.
 
 I have some bad news. The debug overlay isn't going to be able to tell you why your game is broken, especially if it is broken for shader reasons. It can however, give you a good _idea_ of where to start looking to figure out what broke the game.
 
-#### the gist
+## the gist
 
 The debug overlay is a graph. It has the following puzzle pieces: your `fps_real`, the amount of time specific processes are taking to resolve, the number of texture swaps your game has, and the number of batch breaks. This data gives you a decently accurate picture of your game's performance state and is best used to check in on occasionally.
 
-#### fps_real
+## fps_real
 
 This is perhaps the most misleading thing you can look at to judge your game's performance. First of all, this is a measure of how fast your game could run if it were not bottlenecked by cpu cycle times. To make a complex topic into a thin soup: your game is a constant loop and each iteration of the loop finishes before the cpu cycle does. In order to conserve power, your game sleeps for the remainder of that cycle then wakes up to start the next iteration. If your cpu did not have cycles, and your game did not go to sleep each cycle, this is (sort of) how many frames per second your game would run. Adding or removing things from your game can alter this number misleadingly, and it can also be different based on how many youtube videos you're watching at once. This is an unrealistic thing to measure your game by, and you should instead just babysit this number until it gets to an uncomfortable point.
 
