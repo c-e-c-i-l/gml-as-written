@@ -34,6 +34,12 @@ Now the question is: how many is too many? In reality, the number is far greater
 
 The next question is: when to start optimizing texture swaps out of the game? Realistically you probably do not need to. There are steps you can take to do this, self texture atlasing and using texture groups is the big one. Using a single object to batch your draws can also work. But if you spend ten hours trying to reduce texture swaps from 20 to 19, then you wasted ten hours. This doesn't mean you are free to do whatever you want; you should still be cautious and aware. But you should not let this number keep you up at night.
 
+> Texture Page Misconception!
+>
+> Textures are sent the gpu as uncompressed, 24bit images. This means the memory footprint of a texture is Width * Height * 4 bytes, regardless of whether you use only three colors for your Downwell clone or the entire gamut plus some colors you invented. Your palette choice should never be a performance choice, and always be a choice of art direction!
+
+
+
 ![image](/topics/debugoverlay/img/break.png)
 
 ## batch breaks
