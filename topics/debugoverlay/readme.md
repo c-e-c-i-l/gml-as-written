@@ -10,7 +10,7 @@ I have some bad news. The debug overlay isn't going to be able to tell you why y
 
 ## the gist
 
-The debug overlay is a graph. It has the following puzzle pieces: your `fps_real`, the amount of time specific processes are taking to resolve, the number of texture swaps your game has, and the number of batch breaks. This data gives you a decently accurate picture of your game's performance state and is best used to check in on occasionally.
+The debug overlay is a graph. It has the following puzzle pieces: your `fps_real`, a graph the amount of time specific processes are taking to resolve, the number of texture swaps your game has, and the number of batch breaks. This data gives you a decently accurate picture of your game's performance state and is best used to check in on occasionally.
 
 ![image](/topics/debugoverlay/img/fpsreal.png)
 
@@ -52,4 +52,9 @@ repeat (10) {}
 }
 ```
 
-This changes the global alpha state of your game, which is a change in gpu instruction and will cause a batch break. The number of things that cause this is pretty wild. Drawing certain primitives, changing alpha or font, submitting vertex buffers, surface targeting, and many more things. Breaking the batch is unavoidable, but like texture swaps can be mitigated. By grouping your gpu instruction-changing calls together you can reduce the number of batch breaks to bring this number down. But the same advice as lowering swaps applies to lowering batch breaks: the upper limit on batch breaks is hardware and platform dependent and a high number is not automatically bad. Keep an eye on the number, and if you get game chug and are having trouble narrowing down the cause then making steps to reduce batch breaks can help.
+This changes the global alpha state of your game, which is a change in gpu instruction and will cause a batch break. The number of things that cause this is pretty wild. Drawing certain primitives, changing alpha or font, submitting vertex buffers, surface targeting, and many more things. Breaking the batch is unavoidable, but like texture swaps can be mitigated. By grouping your gpu instruction-changing calls together you can reduce the number of batch breaks to bring this number down. But the same advice as lowering swaps applies to lowering batch breaks: the upper limit on batch breaks is hardware and platform dependent and a high number is not automatically bad. Keep an eye on the number, and if you get game chug and are having trouble narrowing down the cause, then making steps to reduce batch breaks can help.
+
+![image](/topics/debugoverlay/img/graph.png)
+
+## the graph
+
