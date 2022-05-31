@@ -44,10 +44,10 @@ The next question is: when to start optimizing texture swaps out of the game? Re
 
 ## batch breaks
 
-Batch breaks are very similar to texture swaps; this is the number of times the gpu state has to change, or put more plainly, the number of times you yell at the gpu to do something different. Similarly to texture swaps, how high this number can go is often battled about across the world wide web and likewise the true limit isn't just some exact number. Just like understanding the swap limit, you need to know what a batch break is.
+Batch breaks are very similar to texture swaps; this is the number of times the gpu state has to change. Put more plainly, it is the number of times you yell at the gpu to do something different. Similarly to texture swaps, how high this number can go is often battled about across the world wide web and likewise the true limit isn't just some exact number. Just like swaps, you need to know what a batch break is.
 
-Mentioned ealier, the gpu is very good at its job but it doesn't like being told what to do a godzillion times per frame. There are certain functions and operations that make the gpu halt its current task, change its state, and continue. That is a batch break. Literally, it has to stop working on the instructions for the last batch of drawing and now focus on a new batch. For example, pretend you need to make 10 `draw_text()` calls each frame with an alpha of .5 and then 10 more `draw_text()` calls with an alpha of 1. Your code might look like this:
-```js
+Mentioned earlier, the gpu is very good at its job but it doesn't like being told what to do a godzillion times per frame. There are certain functions and operations that make the gpu halt its current task, change its state, and continue. That is a batch break. Literally, it has to stop working on the instructions for the last batch of drawing and now focus on a new batch. For example, pretend you need to make 10 `draw_text()` calls each frame with an alpha of .5 and then 10 more `draw_text()` calls with an alpha of 1. Your code might look like this:
+```gml
 draw_set_alpha(0.5);
 repeat (10) {
     draw_text(x, y, "yo momma!");
